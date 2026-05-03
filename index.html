@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silver City Systems — Local Computer Repair & Networking | Sherrill, NY</title>
+<meta name="description" content="Affordable, local computer repair, networking, and tech support in Sherrill, NY. Serving Oneida County. No surprise fees, honest pricing.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Mono:wght@300;400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1e1e3a;
+    --navy-light: #2a2a50;
+    --silver: #5050a0;
+    --silver-light: #b0b0d0;
+    --text: #0d0d1f;
+    --muted: #555566;
+    --bg: #ffffff;
+    --bg-off: #f7f7fc;
+    --border: #e0e0ee;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--navy);
+    z-index: 100;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: #e0e0f0;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #8080b0;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: #c0c0e0; }
+
+  /* HERO */
+  .hero {
+    padding: 130px 5% 90px;
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(160,160,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(160,160,255,0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .hero-inner {
+    position: relative;
+    max-width: 680px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--silver-light);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    color: #f0f0ff;
+    line-height: 1.15;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--silver-light);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: #8080a0;
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .accent-line {
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--silver), var(--silver-light));
+    margin-bottom: 24px;
+  }
+
+  .btn {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--silver);
+    color: #fff;
+    margin-right: 14px;
+  }
+
+  .btn-primary:hover { background: #6060b8; }
+
+  .btn-ghost {
+    border: 1px solid #3a3a6a;
+    color: #8080b0;
+  }
+
+  .btn-ghost:hover { border-color: #6060a0; color: #b0b0d0; }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 5%;
+  }
+
+  .section-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--silver);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3vw, 34px);
+    color: var(--text);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .section-sub {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 540px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  /* ABOUT */
+  .about { background: var(--bg-off); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  @media (max-width: 680px) {
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .nav-links { display: none; }
+  }
+
+  .about-text p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .about-card {
+    background: var(--navy);
+    border-radius: 6px;
+    padding: 36px;
+    color: #e0e0f0;
+  }
+
+  .about-card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .about-card-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--silver-light);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .about-card-accent {
+    width: 32px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--silver), var(--silver-light));
+    margin-bottom: 20px;
+  }
+
+  .about-card p {
+    font-size: 13px;
+    color: #7070a0;
+    line-height: 1.7;
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .service-card {
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 26px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .service-card:hover {
+    border-color: var(--silver-light);
+    box-shadow: 0 4px 20px rgba(80,80,160,0.08);
+  }
+
+  .service-card-icon {
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+
+  .service-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .service-card-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+
+  .service-card-price {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--silver);
+    letter-spacing: 0.05em;
+  }
+
+  /* PRICING */
+  .pricing { background: var(--bg-off); }
+
+  .pricing-note {
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 24px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  thead th {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  tbody tr:nth-child(even) { background: var(--bg); }
+  tbody tr:nth-child(odd) { background: var(--bg-off); }
+
+  tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  tbody td:nth-child(2) {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--silver);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  tbody td:nth-child(3) {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .table-section td {
+    background: var(--navy) !important;
+    color: #a0a0c0 !important;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border: none;
+  }
+
+  /* HOME CARE */
+  .homecare { background: var(--navy); }
+
+  .homecare .section-eyebrow { color: var(--silver-light); }
+  .homecare .section-title { color: #f0f0ff; }
+  .homecare .section-sub { color: #6060a0; }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 680px) {
+    .plans-grid { grid-template-columns: 1fr; }
+  }
+
+  .plan-card {
+    border: 1px solid #2a2a50;
+    border-radius: 5px;
+    padding: 28px;
+    background: #16163a;
+  }
+
+  .plan-card.featured {
+    border-color: var(--silver);
+    background: #1e1e4a;
+  }
+
+  .plan-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #e0e0f0;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .plan-price {
+    font-family: 'DM Mono', monospace;
+    font-size: 22px;
+    color: var(--silver-light);
+    margin-bottom: 4px;
+  }
+
+  .plan-price span {
+    font-size: 12px;
+    color: #5050a0;
+  }
+
+  .plan-divider {
+    width: 100%;
+    height: 1px;
+    background: #2a2a50;
+    margin: 16px 0;
+  }
+
+  .plan-feature {
+    font-size: 13px;
+    color: #6060a0;
+    line-height: 1.9;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .plan-feature::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--silver);
+  }
+
+  .plan-cancel {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: #3a3a6a;
+    letter-spacing: 0.08em;
+    margin-top: 18px;
+    text-transform: uppercase;
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  @media (max-width: 680px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 24px;
+  }
+
+  .contact-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--silver);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .contact-value {
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  .contact-value a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: border-color 0.2s;
+  }
+
+  .contact-value a:hover { border-color: var(--silver); }
+
+  .contact-note {
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.7;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg-off);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 28px 5%;
+    text-align: center;
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: #3a3a6a;
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">Silver City Systems</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#homecare">Home Care</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Sherrill, NY &nbsp;·&nbsp; Oneida County</div>
+    <h1>Local tech support<br>you can <em>actually</em> trust.</h1>
+    <div class="accent-line"></div>
+    <p class="hero-sub">Computer repair, networking, and tech support for homes and small businesses. No surprise fees. No condescension. Just honest help from someone in your community.</p>
+    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+    <a href="#services" class="btn btn-ghost">See Services</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-eyebrow">About</div>
+        <h2 class="section-title">A neighbor, not a call center.</h2>
+        <p>Silver City Systems is a one-person, locally owned tech business serving Sherrill and the surrounding Oneida County area. When you call, you talk to me — the same person who shows up at your door.</p>
+        <p>I started this business because people deserve affordable, honest tech help without having to drive to a big box store and wait in line. Whether it's a slow laptop, a dead router, or just figuring out how to stop those scam emails, I can help.</p>
+        <p>Every job comes with a quote before I start. No surprise charges. Parts are always approved by you before I order anything.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-name">Colin Cron</div>
+        <div class="about-card-title">Owner &amp; Technician</div>
+        <div class="about-card-accent"></div>
+        <p>Background in enterprise IT and network security. I've worked with systems far more complex than your home network — which means your problems are ones I can solve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-eyebrow">What I Do</div>
+    <h2 class="section-title">Services</h2>
+    <p class="section-sub">All services performed at your location. No need to haul your equipment anywhere.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-card-icon">🖥️</div>
+        <div class="service-card-title">Computer Repair</div>
+        <div class="service-card-desc">Virus removal, OS reinstalls, hardware upgrades, slow computer tune-ups, and general troubleshooting.</div>
+        <div class="service-card-price">From $50</div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">📶</div>
+        <div class="service-card-title">Networking</div>
+        <div class="service-card-desc">WiFi troubleshooting, router and modem setup, and small business network configuration.</div>
+        <div class="service-card-price">From $100</div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">📱</div>
+        <div class="service-card-title">Devices & Smart Home</div>
+        <div class="service-card-desc">Phone and tablet setup, smart home devices, cable management, email setup, and cloud backup.</div>
+        <div class="service-card-price">From $50</div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">🔒</div>
+        <div class="service-card-title">Privacy & Security</div>
+        <div class="service-card-desc">Ad blocking, hardened browser setup, password managers, and cybersecurity awareness sessions.</div>
+        <div class="service-card-price">From $50</div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">📖</div>
+        <div class="service-card-title">Training</div>
+        <div class="service-card-desc">One-on-one tutoring for basic computer use, email, video calls, and staying safe online.</div>
+        <div class="service-card-price">$50/hr</div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">💾</div>
+        <div class="service-card-title">Data & Recovery</div>
+        <div class="service-card-desc">Data backup, transfer between devices, and recovery from logical drive failures.</div>
+        <div class="service-card-price">From $100</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-inner">
+    <div class="section-eyebrow">Transparent Pricing</div>
+    <h2 class="section-title">No surprises.</h2>
+    <p class="section-sub">Every job is quoted before I start. The diagnostic fee is waived if you proceed with the repair.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Price</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-section"><td colspan="3">Diagnostics</td></tr>
+        <tr><td>Diagnostic / Consultation</td><td>$40</td><td>Waived if repair is performed</td></tr>
+
+        <tr class="table-section"><td colspan="3">General Repair</td></tr>
+        <tr><td>General tune-up / cleanup</td><td>$50</td><td>Speed optimization, startup items, junk removal</td></tr>
+        <tr><td>Virus / malware removal</td><td>$75</td><td>Full scan, cleanup, and prevention setup</td></tr>
+        <tr><td>New PC / laptop setup</td><td>$75</td><td>Accounts, updates, software, security basics</td></tr>
+        <tr><td>Hardware upgrade (RAM / SSD)</td><td>$75</td><td>Labor only — parts billed at cost + 15%</td></tr>
+        <tr><td>OS reinstall (clean)</td><td>$125</td><td>Includes basic post-install setup</td></tr>
+        <tr><td>Data recovery (simple)</td><td>$100</td><td>Logical failure only</td></tr>
+        <tr><td>Data backup &amp; transfer</td><td>$100</td><td>Old machine to new machine</td></tr>
+
+        <tr class="table-section"><td colspan="3">Networking</td></tr>
+        <tr><td>WiFi troubleshooting</td><td>$100</td><td>Router and connection issues</td></tr>
+        <tr><td>Router / modem setup</td><td>$100</td><td>New equipment setup and configuration</td></tr>
+
+        <tr class="table-section"><td colspan="3">Devices & Smart Home</td></tr>
+        <tr><td>Smart home device setup</td><td>$50</td><td>Alexa, Google Home, smart TVs, Ring, etc.</td></tr>
+        <tr><td>Phone / tablet setup &amp; transfer</td><td>$75</td><td>New device setup and data transfer</td></tr>
+        <tr><td>Cable management</td><td>$50</td><td>Cleanup and organization</td></tr>
+        <tr><td>Email setup &amp; organization</td><td>$50</td><td>Account setup, inbox organization</td></tr>
+        <tr><td>Cloud backup setup</td><td>$75</td><td>Google Drive, iCloud, or OneDrive</td></tr>
+
+        <tr class="table-section"><td colspan="3">Privacy & Security</td></tr>
+        <tr><td>Privacy setup (NextDNS + browser)</td><td>$75</td><td>Network-level ad blocking, hardened browser</td></tr>
+        <tr><td>Cybersecurity awareness session</td><td>$50/hr</td><td>Phishing, passwords, scam awareness</td></tr>
+
+        <tr class="table-section"><td colspan="3">Training</td></tr>
+        <tr><td>One-on-one computer tutoring</td><td>$50/hr</td><td>Basic use, email, video calls, safe browsing</td></tr>
+      </tbody>
+    </table>
+    <p class="pricing-note">Parts sourced on your behalf are billed at cost + 15% and always require your approval before ordering.</p>
+  </div>
+</section>
+
+<!-- HOME CARE -->
+<section class="homecare" id="homecare">
+  <div class="section-inner">
+    <div class="section-eyebrow">Recurring Plans</div>
+    <h2 class="section-title">Home Care Plans</h2>
+    <p class="section-sub">Monthly plans that keep your technology running smoothly — and give you someone to call when something goes wrong.</p>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-name">Basic</div>
+        <div class="plan-price">$29<span>/month</span></div>
+        <div class="plan-divider"></div>
+        <div class="plan-feature">Monthly automated health check</div>
+        <div class="plan-feature">Remote access for minor fixes</div>
+        <div class="plan-feature">Priority scheduling within 48hrs</div>
+        <div class="plan-feature">10% discount on repair labor</div>
+        <div class="plan-cancel">Cancel anytime · No contracts</div>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-name">Standard</div>
+        <div class="plan-price">$49<span>/month</span></div>
+        <div class="plan-divider"></div>
+        <div class="plan-feature">Everything in Basic</div>
+        <div class="plan-feature">Quarterly remote tune-up</div>
+        <div class="plan-feature">Annual in-person visit included</div>
+        <div class="plan-feature">NextDNS privacy setup included</div>
+        <div class="plan-feature">Priority scheduling within 24hrs</div>
+        <div class="plan-cancel">Cancel anytime · No contracts</div>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">Premium</div>
+        <div class="plan-price">$79<span>/month</span></div>
+        <div class="plan-divider"></div>
+        <div class="plan-feature">Everything in Standard</div>
+        <div class="plan-feature">Unlimited remote support</div>
+        <div class="plan-feature">Password manager setup &amp; review</div>
+        <div class="plan-feature">Annual security audit</div>
+        <div class="plan-feature">Same-day priority scheduling</div>
+        <div class="plan-feature">One free hardware upgrade labor/yr</div>
+        <div class="plan-cancel">Cancel anytime · No contracts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div>
+        <div class="section-eyebrow">Get in Touch</div>
+        <h2 class="section-title">Let's fix it.</h2>
+        <p class="section-sub" style="margin-bottom: 32px;">Free estimates always available. Just reach out and describe what's going on — no technical knowledge required.</p>
+        <div class="contact-item">
+          <div class="contact-label">Phone / Text</div>
+          <div class="contact-value"><a href="tel:3157619953">315.761.9953</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:silvercitysystems@gmail.com">silvercitysystems@gmail.com</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">Service Area</div>
+          <div class="contact-value">Sherrill, NY &amp; Oneida County</div>
+        </div>
+      </div>
+      <div class="contact-note">
+        Not sure if your problem is something I can fix? Just ask. Free estimates are always available and I'll be honest with you if it's outside what I can help with. No pressure, no commitment.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Silver City Systems &nbsp;·&nbsp; Sherrill, NY &nbsp;·&nbsp; Locally owned &amp; operated</p>
+</footer>
+
+</body>
+</html>
